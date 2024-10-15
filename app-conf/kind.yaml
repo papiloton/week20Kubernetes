@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains1
+ # namespace: dev
+  labels:
+   app: utrains1
+spec:
+  containers:
+    - name: utrains-app
+      image: httpd
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: sku
+            operator: NotIn
+            values:
+            - small

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: geo-app
+  template:
+    metadata:
+      labels:
+        app: geo-app
+    spec:
+      containers:
+      - name: geo-app
+        image: nginx
+  
+        ports:
+        - containerPort: 80
